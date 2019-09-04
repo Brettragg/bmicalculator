@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee">
+  <!--
+  <jsp-config>
+    <jsp-property-group>
+      <url-pattern>/*</url-pattern>
+      <el-ignored>false</el-ignored>
+    </jsp-property-group>
+  </jsp-config>
+  -->
+  <filter>
+    <filter-name>guiceFilter</filter-name>
+    <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>guiceFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <listener>
+    <listener-class>ru.nbki.ali.testprojects.configurations.BMICalcServletConfig</listener-class>
+  </listener>
+  <!--
+  <servlet>
+    <servlet-name>index</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>index</servlet-name>
+    <url-pattern/>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BMICalc</servlet-name>
+    <servlet-class>ru.nbki.ali.testprojects.ui.BMICalcServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BMICalc</servlet-name>
+    <url-pattern>/BMICalc</url-pattern>
+  </servlet-mapping>
+  -->
+</web-app>
