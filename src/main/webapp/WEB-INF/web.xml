@@ -3,14 +3,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee">
-  <!--
-  <jsp-config>
-    <jsp-property-group>
-      <url-pattern>/*</url-pattern>
-      <el-ignored>false</el-ignored>
-    </jsp-property-group>
-  </jsp-config>
-  -->
+
   <filter>
     <filter-name>guiceFilter</filter-name>
     <filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
@@ -24,23 +17,21 @@
   <listener>
     <listener-class>ru.nbki.ali.testprojects.configurations.BMICalcServletConfig</listener-class>
   </listener>
-  <!--
-  <servlet>
-    <servlet-name>index</servlet-name>
-    <jsp-file>/index.jsp</jsp-file>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>index</servlet-name>
-    <url-pattern/>
-  </servlet-mapping>
+  <listener>
+    <listener-class>org.h2.server.web.DbStarter</listener-class>
+  </listener>
 
-  <servlet>
-    <servlet-name>BMICalc</servlet-name>
-    <servlet-class>ru.nbki.ali.testprojects.ui.BMICalcServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>BMICalc</servlet-name>
-    <url-pattern>/BMICalc</url-pattern>
-  </servlet-mapping>
-  -->
+  <resource-ref>
+    <description>PostgreSQL Datasource</description>
+    <res-ref-name>jdbc/bmidb</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  <resource-ref>
+    <description>H2 Datasource</description>
+    <res-ref-name>jdbc/h2db</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+
 </web-app>

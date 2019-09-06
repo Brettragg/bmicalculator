@@ -10,7 +10,7 @@ import ru.nbki.ali.testprojects.dataaccess.DataInputUnit;
  */
 public class DataInputUnitTest {
     DataInputUnit dataInputUnit;
-    private static final float TEST_WEIGHT = 47f, TEST_HEIGHT = 1.73f;
+    private static final float TEST_WEIGHT = 47f, TEST_HEIGHT = 173f;
     @Before
     public void init() {
         dataInputUnit = new DataInputUnit(TEST_WEIGHT, TEST_HEIGHT);
