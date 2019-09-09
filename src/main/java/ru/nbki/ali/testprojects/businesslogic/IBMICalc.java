@@ -8,7 +8,7 @@ import ru.nbki.ali.testprojects.dataaccess.DataInputUnit;
  * @author Arseniy Lee
  * @version 1.0
  */
-public interface BMICalc {
+public interface IBMICalc {
     /**
      * Calculates Body Mass Index of {@link DataInputUnit}.
      * @param dataUnit A {@link DataInputUnit} object.

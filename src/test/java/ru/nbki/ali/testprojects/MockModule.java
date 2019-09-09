@@ -1,11 +1,11 @@
 package ru.nbki.ali.testprojects;
 
 import com.google.inject.AbstractModule;
-import ru.nbki.ali.testprojects.businesslogic.BMICalc;
+import ru.nbki.ali.testprojects.businesslogic.IBMICalc;
 import ru.nbki.ali.testprojects.businesslogic.WHO_BMICalc;
 import ru.nbki.ali.testprojects.dataaccess.DBDataLayer;
-import ru.nbki.ali.testprojects.dataaccess.DataLayer;
-import ru.nbki.ali.testprojects.dbc.DBConnector;
+import ru.nbki.ali.testprojects.dataaccess.IDataLayer;
+import ru.nbki.ali.testprojects.dbc.IDBConnector;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,12 +17,12 @@ import java.sql.SQLException;
 public class MockModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(BMICalc.class).to(WHO_BMICalc.class);
-        bind(DataLayer.class).to(DBDataLayer.class);
-        bind(DBConnector.class).to(DBConnectorMock.class);
+        bind(IBMICalc.class).to(WHO_BMICalc.class);
+        bind(IDataLayer.class).to(DBDataLayer.class);
+        bind(IDBConnector.class).to(DBConnectorMock.class);
     }
 
-    static class DBConnectorMock implements DBConnector {
+    static class DBConnectorMock implements IDBConnector {
         @Override
         public Connection getConnection() {
             Connection ans;

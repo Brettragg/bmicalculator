@@ -8,6 +8,6 @@ import java.sql.SQLException;
  * @author Arseniy Lee
  * @version 1.4
  */
-public interface DBConnector {
+public interface IDBConnector {
     Connection getConnection() throws SQLException;
 }

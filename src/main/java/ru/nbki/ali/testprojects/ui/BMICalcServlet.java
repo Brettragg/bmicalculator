@@ -2,18 +2,17 @@ package ru.nbki.ali.testprojects.ui;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import ru.nbki.ali.testprojects.businesslogic.BMICalc;
+import ru.nbki.ali.testprojects.Helper;
+import ru.nbki.ali.testprojects.businesslogic.IBMICalc;
 import ru.nbki.ali.testprojects.dataaccess.DataInputUnit;
-import ru.nbki.ali.testprojects.dataaccess.DataLayer;
 import ru.nbki.ali.testprojects.dataaccess.DataStorageUnit;
+import ru.nbki.ali.testprojects.dataaccess.IDataLayer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,12 +25,12 @@ import java.util.List;
 @Singleton
 public class BMICalcServlet extends HttpServlet {
 
-    private final DataLayer dataLayer;
+    private final IDataLayer dataLayer;
 
-    private final BMICalc bmiCalc;
+    private final IBMICalc bmiCalc;
 
     @Inject
-    public BMICalcServlet(DataLayer dataLayer, BMICalc bmiCalc) {
+    public BMICalcServlet(IDataLayer dataLayer, IBMICalc bmiCalc) {
         this.dataLayer = dataLayer;
         this.bmiCalc = bmiCalc;
     }
@@ -71,14 +70,8 @@ public class BMICalcServlet extends HttpServlet {
         }
     }
 
-    private List<DataStorageUnit> getDataList () {
-        final Iterator<DataStorageUnit> iterator = dataLayer.getDataIterator(); // Set up an iterator
-        final ArrayList<DataStorageUnit> data2DArray = new ArrayList<>();    // Represent saved data as an ArrayList of DataStorageUnit
-        while (iterator.hasNext()) {
-            DataStorageUnit item = new DataStorageUnit(iterator.next());
-            data2DArray.add(item);
-        }
-        return data2DArray;
+    private List<DataStorageUnit> getDataList() {
+        return Helper.getList(dataLayer.getDataIterator());
     }
 
 }

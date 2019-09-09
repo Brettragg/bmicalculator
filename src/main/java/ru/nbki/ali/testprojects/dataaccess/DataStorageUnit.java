@@ -3,7 +3,7 @@ package ru.nbki.ali.testprojects.dataaccess;
 import java.io.Serializable;
 
 /**
- * JavaBean to be stored in the DataLayer and passed to the front-end.
+ * JavaBean to be stored in the IDataLayer and passed to the front-end.
  * @author Arseniy Lee
  */
 public class DataStorageUnit extends DataInputUnit implements Serializable {

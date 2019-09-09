@@ -1,29 +1,29 @@
 package ru.nbki.ali.testprojects.dataaccess;
 
 import com.google.inject.Inject;
-import ru.nbki.ali.testprojects.dbc.DBConnector;
+import ru.nbki.ali.testprojects.dbc.IDBConnector;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * A {@link DataLayer} implementation that stores data values in PostgreSQL database.
+ * A {@link IDataLayer} implementation that stores data values in PostgreSQL database.
  * @author Arseniy Lee
  * @version 1.3
  */
-public class DBDataLayer implements DataLayer {
+public class DBDataLayer implements IDataLayer {
     /**
-     * Stored {@link DBConnector} that retrieves {@link Connection} object.
+     * Stored {@link IDBConnector} that retrieves {@link Connection} object.
      */
-    private DBConnector connector;
+    private IDBConnector connector;
 
     /**
      * Simple injectable constructor
-     * @param connector {@link DBConnector} to set.
+     * @param connector {@link IDBConnector} to set.
      */
     @Inject
-    public DBDataLayer(DBConnector connector) {
+    public DBDataLayer(IDBConnector connector) {
         this.connector = connector;
     }
     @Override
@@ -63,7 +63,7 @@ public class DBDataLayer implements DataLayer {
         }
     }
 
-    private void checkDataBaseIntegrity() {
+    private void checkDataBaseIntegrity() { // Provide concrete implementations of checkDataBaseIntegrity() based on compatible database.
         try (Connection connection = connector.getConnection();
              Statement statement = connection.createStatement() ){
             statement.execute("CREATE TABLE IF NOT EXISTS bmicalcdata(id int AUTO_INCREMENT," +

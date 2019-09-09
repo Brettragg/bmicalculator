@@ -8,7 +8,7 @@ import java.util.Iterator;
  * @author Arseniy Lee
  * @version 1.0
  */
-public interface DataLayer {
+public interface IDataLayer {
     /**
      * returns an {@link Iterator} to data.
      * @return {@link Iterator} to data.
