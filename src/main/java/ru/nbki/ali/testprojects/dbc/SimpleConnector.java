@@ -9,10 +9,10 @@ import java.sql.SQLException;
 /**
  * @author Arseniy Lee
  */
-public class H2Connector implements DBConnector {
+public class SimpleConnector implements DBConnector {
     private DataSource dataSource;
     @Inject
-    H2Connector(DataSource dataSource) {
+    SimpleConnector(DataSource dataSource) {
         this.dataSource = dataSource;
     }
     @Override
