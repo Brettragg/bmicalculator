@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
+<%--Error page placeholder--%>
 <html>
 <head>
     <title>Error page</title>

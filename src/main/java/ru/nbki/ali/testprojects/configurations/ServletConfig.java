@@ -16,11 +16,15 @@ import javax.sql.DataSource;
 import static com.google.inject.jndi.JndiIntegration.fromJndi;
 
 /**
- *
+ * Application configuration
  * @author Arseniy Lee
  * @version 1.1
  */
-public final class BMICalcServletConfig extends GuiceServletContextListener {
+public final class ServletConfig extends GuiceServletContextListener {
+    /**
+     * Creates injector based on underlying configuration
+     * @return Created injector
+     */
     @Override
     protected Injector getInjector() {
         return Guice.createInjector(new ServletModule() {

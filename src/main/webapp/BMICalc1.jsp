@@ -2,6 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%--First BMI Calculator that is based on JavaServlet Pages.--%>
 <html>
     <head><title>BMI Calculator</title></head>
     <body>

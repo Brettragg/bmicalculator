@@ -5,6 +5,7 @@
   Date: 12.09.2019
   Time: 17:16
 --%>
+<%--Welcome page--%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
