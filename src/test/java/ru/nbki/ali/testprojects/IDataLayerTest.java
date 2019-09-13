@@ -55,7 +55,11 @@ public class IDataLayerTest {
         dataLayer.addElement(new DataStorageUnit(new DataInputUnit(35f, 153f), 20f, "Low height"));
         Iterator<DataStorageUnit> iterator = dataLayer.getDataIterator();
         TestCase.assertTrue(iterator.hasNext());
-        TestCase.assertEquals("Low height", iterator.next().getCategory());
+        DataStorageUnit nextUnit = iterator.next();
+        TestCase.assertEquals(153f, nextUnit.getHeight());
+        TestCase.assertEquals(35f, nextUnit.getWeight());
+        TestCase.assertEquals(20f, nextUnit.getBmi());
+        TestCase.assertEquals("Low height", nextUnit.getCategory());
         for (int i = 0; i < 4; ++i) {
             TestCase.assertTrue(iterator.hasNext());
             iterator.next();
