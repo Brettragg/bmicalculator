@@ -1,4 +1,4 @@
-package ru.nbki.ali.testprojects.ui;
+package ru.nbki.ali.testprojects.frontend;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * A Servlet which serves as a mediator between
- * business logic layer and an index.jsp html page
+ * business logic layer and an BMICalc1.jsp html page
  *
  * @author Arseniy Lee
  * @version 1.0
@@ -38,7 +38,7 @@ public class BMICalcServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("SAVED_DATA", getDataList());
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        req.getRequestDispatcher("BMICalc1.jsp").forward(req, resp);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BMICalcServlet extends HttpServlet {
 
                 dataLayer.addElement(new DataStorageUnit(dataUnit, bmi, bmiCategory));// Save DataStorageUnit in the database
                 resp.setStatus(HttpServletResponse.SC_OK);
-                req.getRequestDispatcher("index.jsp").forward(req, resp);
+                req.getRequestDispatcher("BMICalc1.jsp").forward(req, resp);
             } catch (NumberFormatException e) {
                 resp.sendRedirect("error.jsp");
             }

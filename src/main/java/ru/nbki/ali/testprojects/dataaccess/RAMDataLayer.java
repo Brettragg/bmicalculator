@@ -1,6 +1,5 @@
 package ru.nbki.ali.testprojects.dataaccess;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -15,7 +14,7 @@ public class RAMDataLayer implements IDataLayer {
     /**
      * An {@link List<DataStorageUnit>} that stores values.
      */
-    private List<DataStorageUnit> dataSyncList;
+    private final List<DataStorageUnit> dataSyncList;
 
     /**
      * A simple constructor

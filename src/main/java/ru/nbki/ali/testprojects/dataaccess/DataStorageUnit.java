@@ -6,6 +6,7 @@ import java.io.Serializable;
  * JavaBean to be stored in the IDataLayer and passed to the front-end.
  * @author Arseniy Lee
  */
+@SuppressWarnings("unused")
 public class DataStorageUnit extends DataInputUnit implements Serializable {
     /**
      * Body Mass Index

@@ -8,9 +8,8 @@ import java.io.Serializable;
  * @author Arseniy Lee
  * @version 1.1
  */
-@SuppressWarnings("WeakerAccess")
 public class DataInputUnit implements Serializable {
-    private static int CM_IN_M = 100;
+    private final static int CM_IN_M = 100;
     /**
      * Contains weight in kilos.
      */

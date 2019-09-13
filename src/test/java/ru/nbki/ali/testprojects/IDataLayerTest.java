@@ -17,7 +17,7 @@ import java.util.Iterator;
  */
 @RunWith(Parameterized.class)
 public class IDataLayerTest {
-    private static Injector injector = Guice.createInjector(new MockModule());
+    private static final Injector injector = Guice.createInjector(new MockModule());
     @Parameterized.Parameter
     public Class listClass;
 

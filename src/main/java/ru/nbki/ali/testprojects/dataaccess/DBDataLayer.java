@@ -16,15 +16,20 @@ public class DBDataLayer implements IDataLayer {
     /**
      * Stored {@link IDBConnector} that retrieves {@link Connection} object.
      */
-    private IDBConnector connector;
+    private final IDBConnector connector;
+    /**
+     * Resolves SQL code based on provided implementation.
+     */
+    private final IDBSQLResolver sqlResolver;
 
     /**
      * Simple injectable constructor
      * @param connector {@link IDBConnector} to set.
      */
     @Inject
-    public DBDataLayer(IDBConnector connector) {
+    public DBDataLayer(IDBConnector connector, IDBSQLResolver sqlResolver) {
         this.connector = connector;
+        this.sqlResolver = sqlResolver;
     }
     @Override
     public Iterator<DataStorageUnit> getDataIterator() {
@@ -63,19 +68,13 @@ public class DBDataLayer implements IDataLayer {
         }
     }
 
-    private void checkDataBaseIntegrity() { // Provide concrete implementations of checkDataBaseIntegrity() based on compatible database.
+    private void checkDataBaseIntegrity() {
         try (Connection connection = connector.getConnection();
-             Statement statement = connection.createStatement() ){
-            statement.execute("CREATE TABLE IF NOT EXISTS bmicalcdata(id int AUTO_INCREMENT," +
+             Statement statement = connection.createStatement()){
+            statement.execute("CREATE TABLE IF NOT EXISTS bmicalcdata(id int " + sqlResolver.autoIncrement() +"," +
                     " height real, weight real, bmi real, category varchar(30));");
-        } catch (SQLException e1) {
-            try (Connection connection = connector.getConnection();
-                 Statement statement = connection.createStatement() ){
-                statement.execute("CREATE TABLE IF NOT EXISTS bmicalcdata(id int GENERATED ALWAYS AS IDENTITY," +
-                        " height real, weight real, bmi real, category varchar(30));");
-            } catch (SQLException e2) {
-                throw new RuntimeException(e2);
-            }
+        } catch (SQLException exception) {
+            throw new RuntimeException(exception);
         }
 
     }

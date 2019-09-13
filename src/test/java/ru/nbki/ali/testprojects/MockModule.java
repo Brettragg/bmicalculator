@@ -1,9 +1,9 @@
 package ru.nbki.ali.testprojects;
 
 import com.google.inject.AbstractModule;
-import ru.nbki.ali.testprojects.businesslogic.IBMICalc;
-import ru.nbki.ali.testprojects.businesslogic.WHO_BMICalc;
 import ru.nbki.ali.testprojects.dataaccess.DBDataLayer;
+import ru.nbki.ali.testprojects.dataaccess.H2SQLResolver;
+import ru.nbki.ali.testprojects.dataaccess.IDBSQLResolver;
 import ru.nbki.ali.testprojects.dataaccess.IDataLayer;
 import ru.nbki.ali.testprojects.dbc.IDBConnector;
 
@@ -14,12 +14,13 @@ import java.sql.SQLException;
 /**
  * @author Arseniy Lee
  */
-public class MockModule extends AbstractModule {
+public final class MockModule extends AbstractModule {
     @Override
     protected void configure() {
-        bind(IBMICalc.class).to(WHO_BMICalc.class);
         bind(IDataLayer.class).to(DBDataLayer.class);
         bind(IDBConnector.class).to(DBConnectorMock.class);
+        bind(IDBSQLResolver.class).to(H2SQLResolver.class);
+
     }
 
     static class DBConnectorMock implements IDBConnector {

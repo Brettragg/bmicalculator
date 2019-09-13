@@ -7,12 +7,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Connector that is responsible for getting connections.
+ * Connector that is responsible for getting connections to databases.
  * @author Arseniy Lee
  * @version 1.4
  */
 public class SimpleConnector implements IDBConnector {
-    private DataSource dataSource;
+    private final DataSource dataSource;
     @Inject
     SimpleConnector(DataSource dataSource) {
         this.dataSource = dataSource;

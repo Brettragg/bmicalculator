@@ -6,7 +6,7 @@
 
   <groupId>ru.nbki.ali.testprojects</groupId>
   <artifactId>bmicalculator</artifactId>
-  <version>1.3-SNAPSHOT</version>
+  <version>1.5-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>bmicalculator Maven Webapp</name>
@@ -24,6 +24,12 @@
       <artifactId>guice</artifactId>
       <version>4.2.2</version>
     </dependency>
+    <!--<dependency>
+      <scope>provided</scope>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+    </dependency>-->
 
     <dependency>
       <scope>provided</scope>
@@ -31,6 +37,7 @@
       <artifactId>servlet-api</artifactId>
       <version>2.5</version>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -148,7 +155,7 @@
             <!-- optional path to a context file
             <contextFile>${tomcatContextXml}</contextFile>
             -->
-            <!-- optional system propoerties you want to add
+            <!-- optional system properties you want to add
             <systemProperties>
               <appserver.base>${project.build.directory}/appserver-base</appserver.base>
               <appserver.home>${project.build.directory}/appserver-home</appserver.home>
@@ -159,6 +166,35 @@
             <!-- if you want to use test dependencies rather than only runtime -->
             <useTestClasspath>false</useTestClasspath>
           </configuration>
+        </plugin>
+        <plugin>
+          <groupId>net.unit8.maven.plugins</groupId>
+          <artifactId>elm-maven-plugin</artifactId>
+          <version>0.1.0</version>
+          <configuration>
+            <elmVersion>0.19.0</elmVersion>
+          </configuration>
+          <executions>
+            <execution>
+              <!-- optional: you don't really need execution ids, but it looks nice in your build log. -->
+              <id>install-elm</id>
+              <goals>
+                <goal>install</goal>
+              </goals>
+              <!-- optional: default phase is "generate-resources" -->
+              <phase>generate-resources</phase>
+            </execution>
+
+            <execution>
+              <id>elm-make</id>
+              <goals>
+                <goal>run</goal>
+              </goals>
+              <configuration>
+                <arguments>make elm-stuff/src/Main.elm</arguments>
+              </configuration>
+            </execution>
+          </executions>
         </plugin>
 
       </plugins>

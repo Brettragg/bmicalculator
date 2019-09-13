@@ -5,6 +5,6 @@
 </head>
 <body>
 You have encountered some error. This is a placeholder page. <br/>
-<a href="index.jsp">Go back</a>
+<a href="BMICalc1.jsp">Go back</a>
 </body>
 </html>
