@@ -32,7 +32,7 @@ public final class BMICalcServletConfig extends GuiceServletContextListener {
                 serve("/BMIREST").with(BMIREST.class);
                 bind(IBMICalc.class).to(WHO_BMICalc.class);
                 bind(IDataLayer.class).to(DBDataLayer.class);
-                bind(IDBSQLResolver.class).to(PostgreSQLResolver.class);
+                bind(IDBSQLResolver.class).to(H2SQLResolver.class);
                 bind(IDBConnector.class).to (SimpleConnector.class);
                 bind(Context.class).to(InitialContext.class);
                 bind(DataSource.class).toProvider(fromJndi(DataSource.class, "java:/comp/env/jdbc/db"));
